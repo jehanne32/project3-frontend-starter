@@ -1,32 +1,38 @@
 import React from 'react';
 import './App.css';
+// import {
+//   BrowserRouter as Router,
+//   Route,
+//   Link
+// } from 'react-router-dom';
 import axios from 'axios';
-// const databaseUrl = process.env.HEROKU_DB_URL || 'http://localhost:3000'
-const databaseUrl = 'https://project3-backend-test.herokuapp.com'
+// import Home from './Home.js';
+// import AllPoliticians from './AllPoliticians.js';
+// import OnePolitician from './OnePolitician.js';
+const databaseUrl = process.env.HEROKU_DB_URL || 'http://localhost:3000'
 
 class App extends React.Component {
   state = {
-    users: []
+    polititians: []
   }
 
   componentDidMount() {
-    this.getUsers()
+    this.getPoliticians()
   }
 
-  getUsers = () => {
+  getPoliticians = () => {
     axios({
-      url: `${databaseUrl}/api/users`,
-      // url: 'https://project3-backend-test.herokuapp.com/api/users',
+      url: `${databaseUrl}/polititians`,
       method: 'get'
     })
-      .then(users => {
-        console.log(users)
-        this.setState({ users })
+      .then(response => {
+        console.log(response)
+        // this.setState({ polititians })
       })
   }
 
   render() {
-    console.log(this.state.users)
+    console.log(this.state)
     console.log("Rendered")
     return (
       <div className="App" >
