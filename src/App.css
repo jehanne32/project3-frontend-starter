@@ -4,3 +4,7 @@
 .App-link {
   color: #09d3ac;
 }
+.CandidateImages {
+  border-radius: 50%;
+  background-color: darkgray;
+}

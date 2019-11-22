@@ -6,7 +6,7 @@ import {
   Link
 } from 'react-router-dom';
 import AllPoliticians from './AllPoliticians';
-// import OnePolitician from './OnePolitician';
+import OnePolitician from './OnePolitician';
 // import Home from './Home.js';
 
 
@@ -17,12 +17,12 @@ class App extends React.Component {
     return (
       <Router basename='/'>
         <nav>
-          <Link to="/allpoliticians">Candidates</Link>
+          <Link to="/allpoliticians">Candidates</Link>{" "}
         </nav>
         <div className="App" >
           {/* <Route exact path="/" component={Home} /> */}
           <Route exact path="/allpoliticians" component={AllPoliticians} />
-          {/* <Route exact path="/onepolitician" component={OnePolitician} /> */}
+          <Route exact path="/onepolitician/:candidateID" component={OnePolitician} />
         </div>
       </Router>
     );
