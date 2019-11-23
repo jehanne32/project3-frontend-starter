@@ -1,5 +1,7 @@
 import React from 'react';
 import axios from 'axios';
+// import klobuchar from '/image/klobuchar';
+
 const databaseUrl = process.env.HEROKU_DB_URL || 'http://localhost:3000'
 
 class AllPoliticians extends React.Component {
@@ -34,6 +36,7 @@ render() {
     return (
         <div>
             {tempCandid}
+            {/* <img src={klobuchar} alt="Amy Klobuchar" /> */}
         </div>
     )
 }
