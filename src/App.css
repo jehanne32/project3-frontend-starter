@@ -1,9 +1,7 @@
 .App { 
-  text-align: center;
-  background-image: url(/image/am_flag.jpg);
+  background-image: url(/images/american-flag-65.jpg);
   height: 60vh;
   margin-top: -2em;
-  /* opacity: 0.35; */ 
 }
 
 #title {
@@ -16,13 +14,23 @@
 }
 
 .nav {
-  margin-top: 13em;
+  margin-top: 12em;
   text-align: center;
   font-size: 20px;
 }
 
 .para {
-  font-size: 23px;
+  font-size: 20px;
   font-family: 'Merriweather', serif;
+  text-align: center;
+}
+
+.CandidateImages {
+  border-radius: 50%;
+  background-color: darkgray;
+}
+
+.idiot {
+  text-align: center;
 }
 

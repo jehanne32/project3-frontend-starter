@@ -1,12 +1,15 @@
 import React from 'react';
 import axios from 'axios';
-// import klobuchar from '/image/klobuchar';
+
+
+
+import {Link} from 'react-router-dom';
 
 const databaseUrl = process.env.HEROKU_DB_URL || 'http://localhost:3000'
 
 class AllPoliticians extends React.Component {
     state = {
-        candidates: []
+        candidates: []    
     }
 
     componentDidMount() {
@@ -23,23 +26,34 @@ class AllPoliticians extends React.Component {
             })
     }
 
-render() {
-    console.log(this.state.candidates)
-    let tempCandid = this.state.candidates.map(candidate => {
-        console.log(candidate.name)
-        return <h3 key={candidate.id}>{candidate.name}</h3>
-        //   <div>
-        //       <img className="CandidateImages" src="../public/images/blabla" alt=""><a href=""/></img>
-        //   </div>
-    })
+    render() {
+        console.log(this.state.candidates)
+        let tempCandid = this.state.candidates.map(candidate => {
+            return <div key={candidate.id}>
+                <Link to={`/onepolitician/${candidate.id}`}>
+                    <img className="CandidateImages" src={`images/${candidate.id}.png`} alt="" />
+                    <h3>{candidate.name}</h3>
+                </Link>
+                <h4>{candidate.party}</h4>
+            </div>
+        })
+
 
     return (
         <div>
+            <div>
+                <h1 className="idiot">The Candidates</h1>
+            </div>
             {tempCandid}
-            {/* <img src={klobuchar} alt="Amy Klobuchar" /> */}
+            <p className="para1">Here on the candidate’s page, you can click on either 
+                the candidate’s image or their name and a list will 
+                appear showing their positions on various major issues 
+                such as gun control, education and abortion.</p>
+            
         </div>
     )
-}
+    }
+
 }
 
 export default AllPoliticians
