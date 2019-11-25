@@ -20,7 +20,7 @@ class OnePolitician extends React.Component {
             method: 'get'
         })
             .then(response => {
-                // console.log(response)
+                console.log(response)
                 this.setState({ candidate: response.data })
             })
     }

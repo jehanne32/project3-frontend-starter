@@ -1,6 +1,10 @@
 import React from 'react';
 import axios from 'axios';
+
+
+
 import {Link} from 'react-router-dom';
+
 const databaseUrl = process.env.HEROKU_DB_URL || 'http://localhost:3000'
 
 class AllPoliticians extends React.Component {
@@ -34,12 +38,22 @@ class AllPoliticians extends React.Component {
             </div>
         })
 
-        return (
+
+    return (
+        <div>
             <div>
-                    {tempCandid}
+                <h1 className="idiot">The Candidates</h1>
             </div>
-        )
+            {tempCandid}
+            <p className="para1">Here on the candidate’s page, you can click on either 
+                the candidate’s image or their name and a list will 
+                appear showing their positions on various major issues 
+                such as gun control, education and abortion.</p>
+            
+        </div>
+    )
     }
+
 }
 
 export default AllPoliticians
