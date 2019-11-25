@@ -17,7 +17,7 @@ class App extends React.Component {
     return (
       <Router basename='/'>
         <nav>
-          <Link to="/allpoliticians">Candidates</Link>{" "}
+          <Link to="/allpoliticians">Candidates</Link>
         </nav>
         <div className="App" >
           {/* <Route exact path="/" component={Home} /> */}
