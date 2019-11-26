@@ -23,7 +23,6 @@ class App extends React.Component {
 
             <Route exact path="/onepolitician/:candidateID" component={OnePolitician} />
           </div>
-
         </div>
       </Router>
     );
