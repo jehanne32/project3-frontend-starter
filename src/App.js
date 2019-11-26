@@ -15,7 +15,7 @@ class App extends React.Component {
             <h1>Voter's Digest</h1>
           </div>
           <nav className="nav">
-            <Link to="/allpoliticians">Candidates</Link>
+            <Link to="/allpoliticians" className="polbutton">Candidates</Link>
           </nav>
           <div>
             <Route exact path="/" component={Home} />

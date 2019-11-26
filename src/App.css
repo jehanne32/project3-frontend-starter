@@ -13,10 +13,9 @@
   display: flex;
   flex-wrap: wrap;
   justify-content: space-around;
-  justify-content: space-between;
   width: 75%;
   margin-top: 25px;
-  /* flex-direction: row; */
+  flex-direction: row;
   margin-left: 13%;
 }
 
@@ -57,4 +56,30 @@
 }
 .hide {
   visibility: hidden;
+}
+
+.politician img {
+  width: 100vw;
+  height: 80vh;
+}
+
+.button {
+  border: none;
+  padding: 8px;
+  font-size: 18px;
+  font-weight: bold;
+  background-color: orangered;
+  color: white;
+  border-radius: 12px;
+}
+
+.polbutton {
+  padding: 10px;
+  font-size: 22px;
+  border: none;
+  background-color: black;
+  color: white;
+  text-decoration: none;
+  border-radius: 7px;
+  font-weight: bolder;
 }

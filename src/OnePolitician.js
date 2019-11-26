@@ -29,7 +29,7 @@ class OnePolitician extends React.Component {
         let p = vp.querySelector('p');
         let btn = vp.querySelector('button');
         btn.className = "hide";
-        p.className = "";
+        p.className = "EV";
 
     }
 
@@ -42,12 +42,12 @@ class OnePolitician extends React.Component {
             let renderViews = politician.Viewpoints.map(viewpoint => {
                 return <div key={viewpoint.id + 13} id={viewpoint.id + 13} className="viewpoint">
                     <h4>{viewpoint.category}: {viewpoint.for_against}</h4>
-                    <button onClick={() => {this.showEV(viewpoint.id + 13)}}>Read More</button>
+                    <button className="button" onClick={() => {this.showEV(viewpoint.id + 13)}}>Read More</button>
                     <p className="hide EV">{viewpoint.expanded_view}</p>
                 </div>
             })
             return (
-                <div>
+                <div className="politician">
                     <img src={politician.candidate_img_url} alt='' />
                     <div>
                         <h2>{politician.name}</h2>
