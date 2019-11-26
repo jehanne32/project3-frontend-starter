@@ -1,4 +1,4 @@
-#title { 
+#title {
   background-image: url(/images/american-flag-65.jpg);
   height: 60vh;
   margin-top: -2em;
@@ -20,11 +20,11 @@
 }
 
 #title {
- font-family: 'Merienda One', cursive; 
- text-align: center;
- font-size: 40px;
- color: white;
- text-shadow: 4px 4px 6px black;
+  font-family: "Merienda One", cursive;
+  text-align: center;
+  font-size: 40px;
+  color: white;
+  text-shadow: 4px 4px 6px black;
 }
 
 #title h1 {
@@ -40,7 +40,7 @@
 
 .para {
   font-size: 20px;
-  font-family: 'Merriweather', serif;
+  font-family: "Merriweather", serif;
   text-align: center;
 }
 
@@ -52,7 +52,7 @@
 .idiot {
   text-align: center;
   font-size: 20px;
-  font-family: 'Merriweather', serif;
+  font-family: "Merriweather", serif;
 }
 .hide {
   visibility: hidden;
@@ -77,9 +77,34 @@
   padding: 10px;
   font-size: 22px;
   border: none;
-  background-color: black;
+  background-color: purple;
+  background-image: linear-gradient(purple, plum);
   color: white;
   text-decoration: none;
   border-radius: 7px;
   font-weight: bolder;
+  border-radius: 3px;
+  box-shadow: 0px 1px 4px -2px #333;
+  text-shadow: 0px -1px #333;
+}
+
+.polbutton:after {
+  content: "";
+  top: 2px;
+  left: 2px;
+  width: calc(100% - 4px);
+  height: 50%;
+  background: linear-gradient(
+    rgba(255, 255, 255, 0.8),
+    rgba(255, 255, 255, 0.2)
+  );
+}
+
+.polbutton:hover {
+  background: linear-gradient(#073, #0fa);
+}
+
+.video {
+  margin-top: 25px;
+  background-color: 
 }
