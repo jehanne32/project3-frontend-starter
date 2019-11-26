@@ -24,7 +24,12 @@ class OnePolitician extends React.Component {
                 this.setState({ candidate: response.data })
             })
     }
-    getViewpoints = () => {
+    showEV = (id) => {
+        let vp = document.getElementById(id);
+        let p = vp.querySelector('p');
+        let btn = vp.querySelector('button');
+        btn.className = "hide";
+        p.className = "";
 
     }
 
@@ -33,19 +38,22 @@ class OnePolitician extends React.Component {
         let background = politician.Background
         console.log(this.state.candidate)
 
-        if (this.state.candidate.Background && this.state.candidate.Viewpoints) {
+        if (politician.Background && politician.Viewpoints) {
             let renderViews = politician.Viewpoints.map(viewpoint => {
-                console.log(viewpoint)
-                return <div key={viewpoint.id + 13}>
+                return <div key={viewpoint.id + 13} id={viewpoint.id + 13} className="viewpoint">
                     <h4>{viewpoint.category}: {viewpoint.for_against}</h4>
+                    <button onClick={() => {this.showEV(viewpoint.id + 13)}}>Read More</button>
+                    <p className="hide EV">{viewpoint.expanded_view}</p>
                 </div>
             })
             return (
                 <div>
+                    <img src={politician.candidate_img_url} alt='' />
                     <div>
                         <h2>{politician.name}</h2>
+                        <a href={politician.official_website}>Visit Campaign Website</a>
                         <h3>Current Office Held: {politician.current_office}</h3>
-                        <h4>Hometown: {background.hometown}</h4>
+                        <h4>Birthplace: {background.place_of_birth}</h4>
                         <h4>Education: {background.education}</h4>
                         <h4>Family: {background.family}</h4>
                         <h4>Previous Offices Held: {background.offices_held}</h4>
