@@ -13,10 +13,9 @@
   display: flex;
   flex-wrap: wrap;
   justify-content: space-around;
-  justify-content: space-between;
   width: 75%;
   margin-top: 25px;
-  /* flex-direction: row; */
+  flex-direction: row;
   margin-left: 13%;
 }
 
@@ -57,4 +56,7 @@
 }
 .hide {
   visibility: hidden;
+}
+.noDisplay {
+  display: none;
 }
