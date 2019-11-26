@@ -57,7 +57,6 @@
 .hide {
   visibility: hidden;
 }
-
 .politician img {
   width: 100vw;
   height: 80vh;
@@ -99,12 +98,13 @@
     rgba(255, 255, 255, 0.2)
   );
 }
-
 .polbutton:hover {
   background: linear-gradient(#073, #0fa);
 }
-
 .video {
   margin-top: 25px;
-  background-color: 
+  background-color: black;
+}
+.noDisplay {
+  display: none;
 }
