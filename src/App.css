@@ -4,6 +4,22 @@
   margin-top: -2em;
 }
 
+.flex-container {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.canddiv {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  justify-content: space-between;
+  width: 75%;
+  margin-top: 25px;
+  /* flex-direction: row; */
+  margin-left: 13%;
+}
+
 #title {
  font-family: 'Merienda One', cursive; 
  text-align: center;
