@@ -4,6 +4,16 @@
   margin-top: -2em;
 }
 
+.flex-container {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.idiot > div {
+  width: 100px;
+  margin: 150px;
+}
+
 #title {
  font-family: 'Merienda One', cursive; 
  text-align: center;
@@ -14,7 +24,7 @@
 }
 
 .nav {
-  margin-top: 12em;
+  margin-top: 14em;
   text-align: center;
   font-size: 20px;
 }
