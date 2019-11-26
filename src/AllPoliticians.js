@@ -27,7 +27,7 @@ class AllPoliticians extends React.Component {
     render() {
         console.log(this.state.candidates)
         let tempCandid = this.state.candidates.map(candidate => {
-            return <div key={candidate.id}>
+            return <div key={candidate.id} className="pol">
                 <Link to={`/onepolitician/${candidate.id}`}>
                     <img className="CandidateImages" src={`images/${candidate.id}.png`} alt="" />
                     <h3>{candidate.name}</h3>
@@ -46,7 +46,9 @@ class AllPoliticians extends React.Component {
                 the candidate’s image or their name and a list will 
                 appear showing their positions on various major issues 
                 such as gun control, education and abortion.</p>
-            {tempCandid}
+            <div className="canddiv">   
+                {tempCandid}
+            </div> 
             
         </div>
     )

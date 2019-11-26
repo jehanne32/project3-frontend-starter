@@ -9,9 +9,15 @@
   flex-wrap: wrap;
 }
 
-.idiot > div {
-  width: 100px;
-  margin: 150px;
+.canddiv {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  justify-content: space-between;
+  width: 75%;
+  margin-top: 25px;
+  /* flex-direction: row; */
+  margin-left: 13%;
 }
 
 #title {
