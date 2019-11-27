@@ -14,9 +14,6 @@ class App extends React.Component {
           <div id="title">
             <h1>Voter's Digest</h1>
           </div>
-          <nav className="nav">
-            <Link to="/allpoliticians" className="polbutton">Candidates</Link>
-          </nav>
           <div>
             <Route exact path="/" component={Home} />
             <Route exact path="/allpoliticians" component={AllPoliticians} />

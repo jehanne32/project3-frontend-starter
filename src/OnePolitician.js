@@ -1,5 +1,6 @@
 import React from 'react';
 import axios from 'axios';
+import { Link } from "react-router-dom";
 const databaseUrl = process.env.HEROKU_DB_URL || 'http://localhost:3000'
 
 class OnePolitician extends React.Component {
@@ -43,14 +44,18 @@ class OnePolitician extends React.Component {
     }
     createComment = e => {
         e.preventDefault()
-        axios({
-            url: `${databaseUrl}/comments`,
-            method: 'post',
-            data: this.state.newComment
-        })
-            .then(response => {
-                this.getCandidate()
+        if (this.state.newComment.your_name && this.state.newComment.comment) {
+            axios({
+                url: `${databaseUrl}/comments`,
+                method: 'post',
+                data: this.state.newComment
             })
+                .then(response => {
+                    this.getCandidate()
+                })
+        } else {
+            alert("Input failure");
+        }
     }
     handleCommentCreateChange = e => {
         let newComment = {
@@ -60,6 +65,7 @@ class OnePolitician extends React.Component {
             { newComment: { ...prevState.newComment, ...newComment } }
         ))
     }
+
     handleCommentUpdateChange = e => {
         let updateComment = {
             [e.target.name]: e.target.value
@@ -78,24 +84,23 @@ class OnePolitician extends React.Component {
             .then(response => {
                 this.getCandidate()
             })
-        document.getElementById("edit").className = "";
-        let btns = document.querySelectorAll('.editFn');
+        let btns = document.querySelectorAll('.editForm');
         btns.forEach(item => {
-            item.className = "noDisplay editFn";
+            item.className = "noDisplay";
         })
     }
     editComment = e => {
         e.preventDefault()
-        document.getElementById("edit").className = "noDisplay";
-        let btns = document.querySelectorAll('.editFn');
-        btns.forEach(item => {
-            item.className = "editFn";
+        let name = e.target.className
+        e.target.className = "noDisplay";
+        let form = document.querySelectorAll(`.${name}`);
+        form.forEach(item => {
+            item.className = `${name}`;
         })
     }
     updateComment = e => {
         e.preventDefault()
         let commentToUpdateId = e.target.id
-        console.log(commentToUpdateId)
         axios({
             url: `${databaseUrl}/comments/${commentToUpdateId}`,
             method: 'put',
@@ -104,10 +109,43 @@ class OnePolitician extends React.Component {
             .then(response => {
                 this.getCandidate()
             })
-        document.getElementById("edit").className = "";
-        let btns = document.querySelectorAll('.editFn');
+        let btns = document.querySelectorAll('.editForm');
         btns.forEach(item => {
-            item.className = "noDisplay editFn";
+            item.className = "noDisplay";
+        })
+    }
+    renderViews = () => {
+        return this.state.candidate.Viewpoints.map(viewpoint => {
+            return <div key={viewpoint.id + 13} id={viewpoint.id + 13} className="viewpoint">
+                <div className="viewpoint-small">
+                    <h4>{viewpoint.category}: </h4>
+                    <h4 id="forAgainst">{viewpoint.for_against}</h4>
+                    <button className="button" onClick={() => { this.showEV(viewpoint.id + 13) }}>Read More</button>
+                </div>
+                <div>
+                    <p className="hide EV">{viewpoint.expanded_view}</p>
+                </div>                
+            </div>
+        })
+    }
+    renderComments = () => {
+        return this.state.candidate.Comments.map(comment => {
+            let nameJoined = comment.your_name.split(" ").join('')
+            return <div key={comment.id + 23} className="comments">
+                <h5>{comment.your_name}</h5>
+                <p>{comment.comment}</p>
+                <button className={`${nameJoined}`} id={comment.id} onClick={this.editComment}>Edit</button>
+                <form className={`noDisplay editForm ${nameJoined}`} id={comment.id} onChange={e => this.handleCommentUpdateChange(e)}>
+                    <label>Updated Username:
+                        <input type="text" name="your_name" />
+                    </label><br />
+                    <label>Updated Comment:
+                        <textarea type="text" name="comment" />
+                    </label>
+                </form>
+                <button className={`noDisplay editForm ${nameJoined}`} id={comment.id} onClick={this.updateComment}>UPDATE</button>{' '}
+                <button className={`noDisplay editForm ${nameJoined}`} id={comment.id} onClick={this.deleteComment}>DELETE</button>
+            </div>
         })
     }
 
@@ -115,59 +153,38 @@ class OnePolitician extends React.Component {
         let politician = this.state.candidate
         let background = politician.Background
         console.log(this.state.candidate)
-        console.log(this.state.updateComment)
 
         if (politician.Background && politician.Viewpoints && politician.Comments) {
-            let renderViews = politician.Viewpoints.map(viewpoint => {
-                return <div key={viewpoint.id + 13} id={viewpoint.id + 13} className="viewpoint">
-                    <h4>{viewpoint.category}: {viewpoint.for_against}</h4>
-                    <button className="button" onClick={() => {this.showEV(viewpoint.id + 13)}}>Read More</button>
-                    <p className="hide EV">{viewpoint.expanded_view}</p>
-                </div>
-            })
-            let renderComments = politician.Comments.map(comment => {
-                return <div key={comment.id + 23} className="comments">
-                    <h5>{comment.your_name}</h5>
-                    <p>{comment.comment}</p>
-                    <button id="edit" onClick={this.editComment}>Edit</button>
-                    <form className="noDisplay editFn" id={comment.id} onChange={e => this.handleCommentUpdateChange(e)}>
-                        <label>Updated Username:</label>
-                        <input type="text" name="your_name" />
-                        <label>Updated Comment:</label>
-                        <textarea type="text" name="comment" />
-                    </form>
-                    <button className="noDisplay editFn" id={comment.id} onClick={this.updateComment}>UPDATE</button>{' '}
-                    <button className="noDisplay editFn" id={comment.id} onClick={this.deleteComment}>DELETE</button>
-                </div>
-            })
-
             return (
                 <div className="politician">
-                    <iframe className="video" width="650" height="543" src={politician.candidate_img_url} frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-                    {/* <iframe width="420" height="315" src={politician.candidate_img_url} alt='' /> */}
-                    <div>
-                        <h2>{politician.name}</h2>
-                        <a href={politician.official_website} target="_blank" rel="noopener noreferrer">Visit Campaign Website</a>
+                    <nav className="nav">
+                        <Link to="/allpoliticians" className="polbutton">Candidates</Link>
+                    </nav>
+                    <iframe className="video" width="650" height="543" src={politician.candidate_img_url} frameBorder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowFullScreen></iframe>
+                    <div id="bio">
+                        <h1>{politician.name}</h1>
                         <h3>Current Office Held: {politician.current_office}</h3>
+                        <a href={politician.official_website} target="_blank" rel="noopener noreferrer">Visit Campaign Website</a>
                         <h4>Birthplace: {background.place_of_birth}</h4>
                         <h4>Education: {background.education}</h4>
                         <h4>Family: {background.family}</h4>
                         <h4>Previous Offices Held: {background.offices_held}</h4>
                         <h4>Legislation Created: {background.legislation}</h4>
                     </div>
-                    <div>
+                    <div className="politician">
                         <h3>Viewpoints</h3>
-                        {renderViews}
+                        {this.renderViews()}
                     </div>
-                    <form onSubmit={this.createComment} onChange={e => this.handleCommentCreateChange(e)}>
+                    <form id="commentForm" onSubmit={this.createComment} onChange={e => this.handleCommentCreateChange(e)}>
                         <label>Username:</label>
-                        <input type="text" name="your_name" />
+                        <input id="userInput" type="text" name="your_name" />
+                        <br />
                         <label>Comment:</label>
-                        <textarea type="text" name="comment" />
-                        <input type="submit" value="Submit" />
+                        <textarea rows="8" id="commentInput" type="text" name="comment" />
+                        <input id="commentSubmit" type="submit" value="Submit" />
                     </form>
-                    <div>
-                        {renderComments}
+                    <div id="comments-flexbox">
+                        {this.renderComments()}
                     </div>
                 </div>
             )
