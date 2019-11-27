@@ -1,7 +1,16 @@
+.App {
+  background-color: rgb(236, 218, 193);
+  min-height: 100vh;
+}
 #title {
   background-image: url(/images/american-flag-65.jpg);
   height: 60vh;
   margin-top: -2em;
+  font-family: "Merienda One", cursive;
+  text-align: center;
+  font-size: 40px;
+  color: white;
+  text-shadow: 4px 4px 6px black;
 }
 
 .flex-container {
@@ -18,13 +27,10 @@
   flex-direction: row;
   margin-left: 13%;
 }
-
-#title {
-  font-family: "Merienda One", cursive;
-  text-align: center;
-  font-size: 40px;
-  color: white;
-  text-shadow: 4px 4px 6px black;
+.politician {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 #title h1 {
@@ -54,6 +60,46 @@
   font-size: 20px;
   font-family: "Merriweather", serif;
 }
+#commentForm {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border: 2px solid black;
+  width: 40%;
+  padding: 5px;
+  background-color: peachpuff;
+}
+#commentInput {
+  margin: 5px;
+  margin-top: 15px;
+  padding: 2px;
+  width: 95%;
+}
+#commentSubmit {
+  width: 50px;
+}
+#comments-flexbox {
+  margin: 15px;
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  width: 90%;
+}
+#userInput {
+  padding: 2px;
+  margin: 5px;
+  width: 50%;
+}
+.comments {
+  border: 2px solid black;
+  border-radius: 10px;
+  width: 15%;
+  min-height: 10%;
+  max-height: 40%;
+  padding: 5px;
+  margin: 15px;
+  background-color: papayawhip;
+}
 .hide {
   visibility: hidden;
 }
@@ -66,6 +112,8 @@
   background-color: orangered;
   color: white;
   border-radius: 12px;
+  width: 60px;
+  height: 70px;
 }
 
 .polbutton {
@@ -100,10 +148,41 @@
 .video {
   margin-top: 25px;
   background-color: black;
-  margin-left: 24%;
 }
 
 .noDisplay {
   display: none;
 }
-
+.viewpoint {
+  display: flex;
+}
+.viewpoint h4 {
+  padding: 5px;
+}
+.viewpoint-small {
+  display: flex;
+  justify-content: space-between;
+  min-width: 250px;
+}
+#forAgainst {
+  color: rgb(129, 175, 37);
+}
+.viewpoint p {
+  padding: 5px;
+}
+#bio {
+  border: 8px outset rgb(253, 237, 213);
+  background-color: rgba(255, 255, 255, 0.452);
+  margin: 8px;
+  padding: 5px;
+}
+#bio h1, #bio a, #bio h3 {
+  margin: 10px;
+  text-align: center;
+}
+#bio h4 {
+  margin: 5px;
+}
+.pol {
+  width: 180px;
+}
