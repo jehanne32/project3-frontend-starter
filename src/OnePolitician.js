@@ -142,9 +142,10 @@ class OnePolitician extends React.Component {
             })
 
             return (
-                <div className="politician">
-                    <iframe className="video" width="650" height="543" src={politician.candidate_img_url} frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-                    {/* <iframe width="420" height="315" src={politician.candidate_img_url} alt='' /> */}
+            <div>
+                    <iframe className="video" width="750" height="500" src={politician.candidate_img_url} 
+                    frameBorder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" 
+                    allowFullScreen></iframe>
                     <div>
                         <h2>{politician.name}</h2>
                         <a href={politician.official_website} target="_blank" rel="noopener noreferrer">Visit Campaign Website</a>

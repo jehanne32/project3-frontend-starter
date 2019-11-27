@@ -57,10 +57,6 @@
 .hide {
   visibility: hidden;
 }
-.politician img {
-  width: 100vw;
-  height: 80vh;
-}
 
 .button {
   border: none;
@@ -82,7 +78,7 @@
   text-decoration: none;
   border-radius: 7px;
   font-weight: bolder;
-  border-radius: 3px;
+  border-radius: 6px;
   box-shadow: 0px 1px 4px -2px #333;
   text-shadow: 0px -1px #333;
 }
@@ -104,7 +100,10 @@
 .video {
   margin-top: 25px;
   background-color: black;
+  margin-left: 24%;
 }
+
 .noDisplay {
   display: none;
 }
+
